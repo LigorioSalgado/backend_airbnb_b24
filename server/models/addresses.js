@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     references: DataTypes.TEXT
   }, {});
   Addresses.associate = function(models) {
-    Addresses.belongsTo(models.Houses)
+    Addresses.belongsTo(models.Houses,{foreignKey:"houseId"})
   };
   return Addresses;
 };

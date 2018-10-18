@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     paypal_confirmation: DataTypes.STRING
   }, {});
   Bookings.associate = function(models) {
-    Bookings.belongsTo(models.Users)
-    Bookings.belongsTo(models.Houses)
+    Bookings.belongsTo(models.Users,{foreignKey:"userId"})
+    Bookings.belongsTo(models.Houses,{foreignKey:"houseId"})
     Bookings.hasOne(models.Comments)
   };
   return Bookings;

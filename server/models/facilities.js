@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     garage: DataTypes.INTEGER
   }, {});
   Facilities.associate = function(models) {
-    Facilities.belongsTo(models.Houses)
+    Facilities.belongsTo(models.Houses,{foreignKey:"houseId"})
   };
   return Facilities;
 };

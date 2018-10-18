@@ -3,7 +3,6 @@ const createToken = require('../resolvers/createToken');
 
 
 const signUp = async(req,res) => {
-    console.log(req.body)
     let user = await Users.create(req.body)
 
     /*var user = null
