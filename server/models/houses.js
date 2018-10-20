@@ -16,10 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     status: {type:DataTypes.ENUM,values:["B","A"]}
   }, {});
   Houses.associate = function(models) {
-    Houses.belongsTo(models.Users,{foreignKey:"userId"})
-    Houses.hasMany(models.Bookings)
-    Houses.hasOne(models.Addresses)
-    Houses.hasOne(models.Facilities)
+    Houses.belongsTo(models.Users,{foreignKey:"userId",as:"user"})
+    Houses.hasMany(models.Bookings,{foreignKey:"houseId"})
+    Houses.hasOne(models.Addresses,{foreignKey:"houseId",as:"address"})
+    Houses.hasOne(models.Facilities,{foreignKey:"houseId",as:"facilities"})
   };
   return Houses;
 };

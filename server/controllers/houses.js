@@ -1,4 +1,4 @@
-const {Houses,Facilities,Addresses} = require("../models");
+const {Houses,Facilities,Addresses,Users} = require("../models");
 
 
 
@@ -20,7 +20,49 @@ const createHouse = async(req,res) => {
 }
 
 
+const getAllHouses =  async(req,res) => {
+    let allHouses = await Houses.findAll({where:{},include:[
+       {
+           model:Users,
+           as:"user"
+       },
+       {
+           model:Facilities,
+           as:"facilities"
+           
+       },
+       {
+           model:Addresses,
+           as:"address"
+       }
+    ]})
+
+    return res.status(200).json(allHouses);
+}
+
+const  getOneHouse = async(req,res) => {
+    let getHouse = await Houses.findOne({where:{id:req.params.id},include:[
+        {
+            model:Users,
+            as:"user"
+        },
+        {
+            model:Facilities,
+            as:"facilities"
+        },
+        {
+            model:Addresses,
+            as:"address"
+        }
+     ]})
+     
+     return res.status(200).json(getHouse)
+}
+
+
 module.exports = {
-    createHouse
+    createHouse,
+    getAllHouses,
+    getOneHouse
 
 }
