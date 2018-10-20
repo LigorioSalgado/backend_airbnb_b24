@@ -28,7 +28,14 @@ const calculatePrice = async(req,res) => {
 
 
 
-const createBooking = async() => {
+const createBooking = async(req,res) => {
+
+    req.body.userId = req.user.id
+    const booking =  await Bookings.create(req.body)
+            .catch(e=>res.status(400).json(e))
+    if(!booking) res.status(400).json({message:"Promblems to create booking"})
+
+    res.status(200).json({message:"Booking created",id:booking.id})
 
 }
 
