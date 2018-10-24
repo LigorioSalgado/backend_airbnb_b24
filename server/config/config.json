@@ -7,11 +7,11 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "mvyykski",
+    "password": "ZFQgM32hjaPhnKi0MGxl8bXcdGOidhV4",
+    "database": "mvyykski",
+    "host": "stampy.db.elephantsql.com",
+    "dialect": "postgres"
   },
   "production": {
    "use_env_variable":"DATABASE_URL"
